@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>登入</title>
     <style>
         *{margin:0;
             padding:0;
@@ -28,15 +28,15 @@
 </head>
 <body>
 <div class="form-wrapper">
-    <h1>登录</h1>
+    <h1>登入</h1>
     <form id="loginForm" >
         <div class="row">
-            <lable>邮箱</lable>
+            <lable>信箱</lable>
             <input type="text" name="email">
             <span class="error"></span>
         </div>
         <div class="row">
-            <lable>密码</lable>
+            <lable>密碼</lable>
             <input type="password" name="password">
             <span class="error"></span>
         </div>
@@ -72,7 +72,7 @@
 
         $.post('/login',hash).then(() =>{window.location.href="/"},
             () => {
-                alert("登录失败，请重新登录")
+                alert("登入失敗，請重新登入")
             })
 
     })

@@ -4,7 +4,7 @@ var url = require('url')
 var port = process.argv[2]
 
 if(!port){
-    console.log('请指定端口号好不啦？')
+    console.log('請指定端口號？')
     process.exit(1)
 }
 
@@ -19,7 +19,7 @@ var server = http.createServer(function(request, response){
 
     /******** ************/
 
-    console.log('含查询字符串的路径\n' + pathWithQuery)
+    console.log('含查詢字符串的路徑\n' + pathWithQuery)
 
     if(path === '/register' && method ==='GET'){
         let string = fs.readFileSync('./register.html', 'utf8')
@@ -30,7 +30,7 @@ var server = http.createServer(function(request, response){
     }
     else if(path === '/'){
         let string = fs.readFileSync('./index.html', 'utf8')
-        let cookies = request.headers.cookie.split('; ');/*这里多出一个空格，要注意*/
+        let cookies = request.headers.cookie.split('; ');/*這里多出一個空格*/
         let hash = {};
         for(let i =0 ;i<cookies.length;i++){
             let parts = cookies[i].split('=');
@@ -52,7 +52,7 @@ var server = http.createServer(function(request, response){
         }
 
         if(foundUser){string = string.replace('--email--',foundUser.email)}
-        else{string = string.replace('--email--','未登录')}
+        else{string = string.replace('--email--','未登入')}
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
         response.write(string)
@@ -166,14 +166,7 @@ var server = http.createServer(function(request, response){
         response.setHeader('Content-Type', 'text/json;charset=utf-8')
         response.setHeader('Access-Control-Allow-Origin', 'http://localhost:8002')
         response.write(`
-    {
-      "note":{
-        "to": "小谷",
-        "from": "方方",
-        "heading": "打招呼",
-        "content": "hi"
-      }
-    }
+
     `)
         response.end()
     }
@@ -204,4 +197,4 @@ function readBody(request){
 }
 
 server.listen(port)
-console.log('监听 ' + port + ' 成功\n http://localhost:' + port)
+console.log('監聽 ' + port + ' 成功\n http://localhost:' + port)
